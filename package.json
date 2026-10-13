@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/tsunade1000/Aetheris#readme",
   "dependencies": {
+    "better-sqlite3": "^13.0.3",
     "discord.js": "^14.27.0",
     "dotenv": "^18.0.7"
   }

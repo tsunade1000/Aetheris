@@ -15,6 +15,10 @@ export default {
         try {
             await command.execute(interaction);
         } catch (error) {
+            if (error.code === 50013) {
+                // Ignore silencieusement les erreurs de permissions manquantes
+                return;
+            }
             console.error(`[ERREUR] Erreur lors de l'exécution de la commande ${interaction.commandName}:`);
             console.error(error);
             if (interaction.replied || interaction.deferred) {
