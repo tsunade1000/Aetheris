@@ -60,7 +60,31 @@ const statements = {
     addInfraction: db.prepare(`
         INSERT INTO infractions (guild_id, user_id, moderator_id, action_type, reason)
         VALUES (@guild_id, @user_id, @moderator_id, @action_type, @reason)
+    `),
+    getUserInfractions: db.prepare(`
+        SELECT * FROM infractions
+        WHERE guild_id = ? AND user_id = ?
+        ORDER BY created_at DESC
+    `),
+    clearUserInfractions: db.prepare(`
+        DELETE FROM infractions
+        WHERE guild_id = ? AND user_id = ?
     `)
 };
 
-export { db, statements, dbPath };
+// Fonction utilitaire pour s'assurer que la config existe avant d'ajouter une infraction
+function logInfraction({ guild_id, user_id, moderator_id, action_type, reason }) {
+    const config = statements.getConfig.get(guild_id);
+    if (!config) {
+         statements.setConfig.run({
+            guild_id,
+            log_channel_id: null,
+            welcome_channel_id: null,
+            autorole_id: null
+        });
+    }
+
+    statements.addInfraction.run({ guild_id, user_id, moderator_id, action_type, reason });
+}
+
+export { db, statements, logInfraction, dbPath };

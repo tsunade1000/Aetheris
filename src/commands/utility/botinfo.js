@@ -28,7 +28,7 @@ export default {
         const wsLatency = interaction.client.ws.ping;
 
         // Calcul du ping de l'API REST
-        const sent = await interaction.reply({ content: 'Récupération des données en cours...', fetchReply: true });
+        const sent = await interaction.reply({ content: 'Récupération des données en cours...', withResponse: true });
         const restLatency = sent.createdTimestamp - interaction.createdTimestamp;
 
         // SQLite Info
