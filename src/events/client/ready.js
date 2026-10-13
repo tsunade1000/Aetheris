@@ -1,4 +1,6 @@
 import { Events, ActivityType } from 'discord.js';
+import { startUptimeMonitor } from '../../services/uptimeMonitor.js';
+import { startAnomalyScheduler } from '../../services/anomalyScheduler.js';
 
 export default {
     name: Events.ClientReady,
@@ -11,5 +13,9 @@ export default {
             activities: [{ name: 'Aetheris | /help', type: ActivityType.Watching }],
             status: 'online',
         });
+
+        // Lancement des services d'arrière-plan
+        startUptimeMonitor(client);
+        startAnomalyScheduler(client);
     },
 };
