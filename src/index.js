@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { initializeTelemetry } from './services/errorTelemetry.js';
 
 // Chargement des variables d'environnement
 dotenv.config();
@@ -73,6 +74,9 @@ if (fs.existsSync(eventsPath)) {
         }
     }
 }
+
+// Initialisation globale de la télémétrie des erreurs
+initializeTelemetry(client);
 
 // Connexion du bot à Discord
 client.login(process.env.DISCORD_TOKEN);
