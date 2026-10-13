@@ -1,0 +1,28 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Compagnon moderne, modulaire et open source conçu pour simplifier la modération et dynamiser l'activité de vos serveurs. Le projet est actuellement en plein développement : de nouvelles fonctionnalités sont ajoutées régulièrement et les retours sont les bienvenus.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "deploy": "node src/deploy-commands.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsunade1000/Aetheris.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/tsunade1000/Aetheris/issues"
+  },
+  "homepage": "https://github.com/tsunade1000/Aetheris#readme",
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "dotenv": "^18.0.7"
+  }
+}
