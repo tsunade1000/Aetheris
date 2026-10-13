@@ -6,7 +6,7 @@ export default {
         .setDescription('Affiche la latence du bot et de l\'API Discord.'),
     async execute(interaction) {
         // Envoi initial pour calculer la latence
-        const sent = await interaction.reply({ content: 'Calcul en cours...', fetchReply: true });
+        const sent = await interaction.reply({ content: 'Calcul en cours...', withResponse: true });
 
         // Latence du bot (différence entre l'heure de réception et l'heure d'envoi du message)
         const latency = sent.createdTimestamp - interaction.createdTimestamp;
